@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 rm -rf build || true
 mkdir -p build
 curl -o build/Dockerfile https://raw.githubusercontent.com/nginxinc/docker-nginx/master/modules/Dockerfile.alpine
