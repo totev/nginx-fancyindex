@@ -29,11 +29,10 @@ Again if you wish, you can use included file `static-site.nginx.conf` as a start
 ### Example usage
 ```
 docker run \
-  --rm \
-  -it \
+  -dit \
   -p 8080:80 \
   -v $(pwd)/static-site.nginx.conf:/etc/nginx/conf.d/default.conf:ro \
   -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
   -v $(pwd)/build:/usr/share/nginx/html:ro \
-  totev/nginx-fancyindex
+  ghcr.io/totev/nginx-fancyindex:main
 ```
