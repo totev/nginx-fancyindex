@@ -1,3 +1,5 @@
+![ci/cd](https://github.com/totev/nginx-fancyindex/actions/workflows/build.yml/badge.svg)
+
 ## nginx-fancyindex
 A container based on the [official alpine based nginx image](https://github.com/nginxinc/docker-nginx/tree/master/modules) compiled with the [Fancy Index module](https://github.com/aperezdc/ngx-fancyindex).
 
