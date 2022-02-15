@@ -1,5 +1,5 @@
 ## nginx-fancyindex
-A container based on the [official alpine based nginx image](https://github.com/nginxinc/docker-nginx/tree/master/modules) compiled with the [Fancy Index module](https://github.com/aperezdc/ngx-fancyindex) enabled.
+A container based on the [official alpine based nginx image](https://github.com/nginxinc/docker-nginx/tree/master/modules) compiled with the [Fancy Index module](https://github.com/aperezdc/ngx-fancyindex).
 
 No modification is done to the original projects, feel free to inspect the build script `build.sh`.
 
