@@ -5,6 +5,9 @@ on:
     branches: [ main, "feat/*" ]
   pull_request:
     branches: [ main ]
+  schedule:
+    # Runs "every Tuesday at 8" (see https://crontab.guru)
+    - cron: '0 8 * * 2'
 
   workflow_dispatch:
 
