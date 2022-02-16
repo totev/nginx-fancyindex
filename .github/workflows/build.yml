@@ -2,7 +2,7 @@ name: Build Pipeline
 
 on:
   push:
-    branches: [ main, "feat/*" ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -57,7 +57,7 @@ jobs:
         with:
           context: ./build/
           platforms: linux/amd64,linux/arm64
-          push: false
+          push: ${{ github.event_name != 'pull_request' }}
           build-args: ENABLED_MODULES=fancyindex
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
