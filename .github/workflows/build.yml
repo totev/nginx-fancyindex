@@ -49,7 +49,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.IMAGE_NAME }},ghcr.io/${{ env.IMAGE_NAME }}
           flavor: |
             latest=true
           
