@@ -36,5 +36,5 @@ docker run \
   -v $(pwd)/static-site.nginx.conf:/etc/nginx/conf.d/default.conf:ro \
   -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
   -v $(pwd)/build:/usr/share/nginx/html:ro \
-  ghcr.io/totev/nginx-fancyindex:main
+  ghcr.io/totev/nginx-fancyindex:latest
 ```
