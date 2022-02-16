@@ -2,15 +2,13 @@ name: Build Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, "feat/*" ]
   pull_request:
     branches: [ main ]
 
   workflow_dispatch:
 
 env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   
 jobs:
@@ -25,12 +23,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Log in to the Container registry
+      - name: Log in to the ghcr.io container registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -47,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./build/
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' && github.ref_name == 'main'}}
           build-args: ENABLED_MODULES=fancyindex
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
